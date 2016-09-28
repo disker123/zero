@@ -1,0 +1,33 @@
+float positionA[3];
+float positionB[3];
+int counter;
+void init(){
+    positionA[0] = 0;
+    positionA[1] = 1;
+    positionA[2] = 0;
+    positionB[0] = 1;
+    positionB[1] = 0;
+    positionB[2] = 0;
+    counter = 0;
+
+}
+
+void loop(){
+    if(counter<1){
+    game.dropSPS();
+    }
+    if(counter>10){
+    api.setPositionTarget(positionA);
+    }
+    if(counter == 30){
+    game.dropSPS();
+    }
+    if(counter>30){
+    api.setPositionTarget(positionB);
+    }
+    if(counter>50){
+    game.dropSPS();
+  
+    }
+    counter++;
+}
