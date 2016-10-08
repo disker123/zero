@@ -1,0 +1,36 @@
+float positionA[3];
+float positionB[3];
+float positionC[3];
+int counter;
+void init(){
+    positionA[0] = .738;
+    positionA[1] = .738;
+    positionA[2] = 0;
+    positionB[0] = .73;
+    positionB[1] = -.73;
+    positionB[2] = 0;
+    positionC[0] = -.738;
+    positionC[1] = 0;
+    positionC[2] = 0;
+    counter = 0;
+}
+
+void loop(){
+    if(counter == 0){
+    game.dropSPS();
+    }
+    if(counter>0){
+    api.setPositionTarget(positionA);
+    }
+    if(counter == 30){
+    game.dropSPS();
+    }
+    if(counter>30){
+    api.setPositionTarget(positionB);
+    }
+    if(counter == 68){
+    game.dropSPS();
+    }
+    "game.getZoneInfo()";
+        counter++;
+}
