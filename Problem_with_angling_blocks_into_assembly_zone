@@ -1,0 +1,59 @@
+float positionA[3];
+float positionB[3];
+float positionC[3];
+float attitudeA[3];
+int counter;
+bool dockItem();
+float zoneInfo[4];
+float item[3];
+void init(){
+    positionA[0] = .73;
+    positionA[1] = .73;
+    positionA[2] = 0;
+    positionB[0] = .73;
+    positionB[1] = -.73;
+    positionB[2] = 0;
+    positionC[0] = .505;
+    positionC[1] = -.36;
+    positionC[2] = .36;
+    attitudeA[0]=-1;
+    attitudeA[1]=0;
+    attitudeA[2]=0;
+    counter = 0;
+}
+
+void loop(){
+    if(counter == 0){
+    game.dropSPS();
+    }
+    if(counter>0){
+    api.setPositionTarget(positionA);
+    }
+    if(counter == 30){
+    game.dropSPS();
+    }
+    if(counter>30){
+    api.setPositionTarget(positionB);
+    }
+    if(counter == 70){
+    game.dropSPS();
+    }
+    if(counter>70){
+    api.setPositionTarget(positionC);
+    }
+    if(counter>70){
+    api.setAttitudeTarget(attitudeA);
+    }
+    if(counter == 99){
+    game.dockItem();
+    }
+    if(counter>100){
+    if(game.getZone(zoneInfo)){
+        api.setPositionTarget(zoneInfo);
+       
+     if(game.getZone(zoneInfo)){
+    api.setAttitudeTarget(zoneInfo);
+    }
+    }
+    counter++;
+}
